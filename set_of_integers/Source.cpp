@@ -1,3 +1,21 @@
+//In the created class «Set of integers» :
+//Set elements to store in dynamic array;
+//each element of the set is unique(elements are not repeated);
+//elements are not ordered.
+//Implement methods :
+//constructors(default, with parameters, copying);
+//destructor;
+//feature set verification.
+//
+//Implement operations :
+//adding the element to the set(+, +=);
+//union of two sets(+, +=);
+//removal of the element(-, -=);
+//set difference(-, -=);
+//intersection of sets(*, *=);
+//assignment(= );
+//set comparison(== );
+//streaming outputand input(<>).
 #include "ArrayIntegers.h"
 
 int main()
