@@ -120,7 +120,7 @@ void ArrayIntegers::elementInArray(int element)
 	else cout << "Array doesn't include element \"" << element << "\"\n";
 }
 
-ArrayIntegers ArrayIntegers::operator+(int& right)
+ArrayIntegers& ArrayIntegers::operator+(int& right)
 {
 	ArrayIntegers temp;
 	bool same_elememt = false;
@@ -186,7 +186,7 @@ ArrayIntegers ArrayIntegers::operator+(int& right)
 	return temp;
 }
 
-ArrayIntegers ArrayIntegers::operator+=(int right)
+ArrayIntegers& ArrayIntegers::operator+=(int right)
 {
 
 	bool same_elememt = false;
@@ -204,7 +204,7 @@ ArrayIntegers ArrayIntegers::operator+=(int right)
 	}
 	else
 	{
-		
+
 		if (this->_arr == nullptr)
 		{
 			this->_size += 1;
@@ -214,12 +214,12 @@ ArrayIntegers ArrayIntegers::operator+=(int right)
 				cout << "Error\n";
 				exit(-1);
 			}
-			this->_arr[0] =right;
+			this->_arr[0] = right;
 			return *this;
 		}
 		else
 		{
-			int *temp = new int[this->_size+1];
+			int* temp = new int[this->_size + 1];
 			if (temp == NULL)
 			{
 				cout << "Error\n";
@@ -237,7 +237,26 @@ ArrayIntegers ArrayIntegers::operator+=(int right)
 
 	}
 
-	
+
+}
+
+ArrayIntegers& ArrayIntegers::operator+(ArrayIntegers& right)
+{
+
+	ArrayIntegers* temp = new ArrayIntegers(); 
+
+	if (this->_arr == nullptr) 
+	{
+		temp->_size = right._size;
+		temp->_arr = new int[temp->_size];
+
+		for (int i = 0; i < temp->_size; i++)
+		{
+			temp->_arr[i] = right._arr[i];
+		}
+	}
+
+	return *temp; 
 }
 
 ostream& operator<<(ostream& out, const ArrayIntegers& right)

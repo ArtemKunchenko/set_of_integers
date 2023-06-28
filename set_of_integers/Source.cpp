@@ -21,12 +21,15 @@
 int main()
 {
 	const int size = 3;
-	int a = 3;
+	int a = 4;
 	int arr[size] = { 1, 2, 3 };
 	ArrayIntegers test(arr, size);
 	ArrayIntegers test2;
-	test += a;
-	cout << test<< endl;
+	ArrayIntegers test3;
+	test3 = test2 + test;
+	cout << test3<< endl;
+	cout << test2 << endl;
+	cout << test << endl;
 	system("pause");
 	return 0;
 }
