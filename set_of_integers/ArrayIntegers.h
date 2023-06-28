@@ -1,5 +1,6 @@
 #pragma once
 #include<iostream>
+#include<string>;
 using namespace std;
 
 class ArrayIntegers
@@ -12,8 +13,15 @@ public:
 	ArrayIntegers(const ArrayIntegers& other);//copy constructor
 	void operator=(const ArrayIntegers& other);//copy operator
 	void elementInArray(int element);
+	ArrayIntegers operator+ (int& right);
+	ArrayIntegers operator+= (int right);
+	friend ostream& operator<< (ostream& out, const ArrayIntegers & right);
 private:
 	int _size;
 	int* _arr;
 };
+ostream& operator<< (ostream& out, const ArrayIntegers& right);
+
+
+
 

@@ -21,9 +21,12 @@
 int main()
 {
 	const int size = 3;
+	int a = 3;
 	int arr[size] = { 1, 2, 3 };
 	ArrayIntegers test(arr, size);
-	test.elementInArray(4);
+	ArrayIntegers test2;
+	test += a;
+	cout << test<< endl;
 	system("pause");
 	return 0;
 }
