@@ -234,6 +234,7 @@ ArrayIntegers& ArrayIntegers::operator+=(int right)
 			delete[]this->_arr;
 			this->_arr = temp;
 			this->_size += 1;
+			return *this;
 		}
 
 	}
@@ -292,6 +293,70 @@ ArrayIntegers& ArrayIntegers::operator+(ArrayIntegers& right)
 	}
 
 	return *temp; 
+}
+
+ArrayIntegers& ArrayIntegers::operator+=(ArrayIntegers& right)
+{
+	if (this->_arr==nullptr)
+	{
+		if (right._arr==nullptr)
+		{
+			return *this;
+		}
+		else
+		{
+			this->_size = right._size;
+			this->_arr = new int[this->_size];
+
+			for (int i = 0; i < this->_size; i++)
+			{
+				this->_arr[i] = right._arr[i];
+			}
+			return *this;
+		}
+	}
+	else
+	{
+		if (right._arr == nullptr)
+		{
+			return *this;
+		}
+		else
+		{
+			int counter = 0;
+			int sum_size = this->_size + right._size;
+			int* sum_arr = new int[sum_size];
+			for (int i = 0, j = 0, k = 0; i < sum_size; i++)
+			{
+				if (i < this->_size)
+				{
+					sum_arr[j] = this->_arr[j];
+					counter++;
+					j++;
+				}
+				else
+				{
+					if (this->elementInArray(right._arr[k]) == false)
+					{
+						sum_arr[j] = right._arr[k];
+						counter++;
+						j++;
+					}
+					k++;
+				}
+
+			}
+			this->_size = counter;
+			delete[]this->_arr;
+			this->_arr = new int[counter];
+			for (int i = 0; i < this->_size; i++)
+			{
+				this->_arr[i] = sum_arr[i];
+			}
+			delete[]sum_arr;
+			return *this;
+		}
+	}
 }
 
 ostream& operator<<(ostream& out, const ArrayIntegers& right)

@@ -26,7 +26,10 @@ int main()
 	int arr2[size] = { 4, 2, 5 };
 	ArrayIntegers test(arr, size);
 	ArrayIntegers test2(arr2, size);
-	cout << test + test2 << endl;
+	cout << test << endl;
+	test += test2;
+	cout << test << endl;
+	cout << test2 << endl;
 
 	system("pause");
 	return 0;
