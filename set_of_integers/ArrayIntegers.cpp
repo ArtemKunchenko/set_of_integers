@@ -454,6 +454,42 @@ ArrayIntegers& ArrayIntegers::operator-=(int& right)
 	return *this;
 }
 
+ArrayIntegers& ArrayIntegers::operator-(ArrayIntegers& right)
+{
+	ArrayIntegers* temp = new ArrayIntegers();
+	if (this->_arr==nullptr)
+	{
+		temp->_size = 0;
+		temp->_arr = nullptr;
+	}
+	else
+	{
+		
+		int counter = 0;
+		int sub_size = this->_size;
+		int* sub_arr = new int[sub_size];
+		for (int i = 0, j = 0; i < this->_size; i++)
+		{
+			if (right.elementInArray(this->_arr[i]) == false)
+			{
+				sub_arr[j] = this->_arr[i];
+				j++;
+				counter++;
+			}
+		}
+
+		temp->_size = counter;
+		temp->_arr = new int[counter];
+		for (int i = 0; i < temp->_size; i++)
+		{
+			temp->_arr[i] = sub_arr[i];
+		}
+		delete[] sub_arr;
+
+	}
+	return *temp;
+}
+
 ostream& operator<<(ostream& out, const ArrayIntegers& right)
 {
 	string str;

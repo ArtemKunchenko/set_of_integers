@@ -19,6 +19,7 @@ public:
 	ArrayIntegers& operator+= (ArrayIntegers& right);
 	ArrayIntegers& operator- (int& right);
 	ArrayIntegers& operator-= (int& right);
+	ArrayIntegers& operator- (ArrayIntegers& right);
 	friend ostream& operator<< (ostream& out, const ArrayIntegers & right);
 private:
 	int _size;

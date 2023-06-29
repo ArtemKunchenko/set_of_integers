@@ -27,9 +27,10 @@ int main()
 	ArrayIntegers test(arr, size);
 	ArrayIntegers test2(arr2, size);
 	ArrayIntegers test3;
-	cout << test3 << endl;
-	test3 -= a;
-	cout << test3 << endl;
+	ArrayIntegers test4;
+	cout << test4 << endl;
+	test4 = test-test2;
+	cout << test4 << endl;
 
 	system("pause");
 	return 0;
