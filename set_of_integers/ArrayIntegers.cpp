@@ -359,6 +359,101 @@ ArrayIntegers& ArrayIntegers::operator+=(ArrayIntegers& right)
 	}
 }
 
+ArrayIntegers& ArrayIntegers::operator-(int& right)
+{
+	
+	ArrayIntegers* temp = new ArrayIntegers();
+	if (this->elementInArray(right)==true)
+	{
+		temp->_size = this->_size - 1;
+		if (temp->_size == 0)
+		{
+			temp->_arr = nullptr;
+		}
+		else
+		{
+			temp->_arr = new int[temp->_size];
+			if (temp->_arr == nullptr)
+			{
+				cout << "Error\n";
+				exit(-1);
+			}
+			for (int i = 0, j = 0; i < this->_size; i++)
+			{
+				if (this->_arr[i] != right)
+				{
+					temp->_arr[j] = this->_arr[i];
+					j++;
+				}
+			}
+		}
+	}
+	else
+	{
+		if (this->_arr==nullptr)
+		{
+			temp->_size = 0;
+			temp->_arr = nullptr;
+		}
+		else
+		{
+			temp->_size = this->_size;
+			temp->_arr = new int[temp->_size];
+			if (temp->_arr == nullptr)
+			{
+				cout << "Error\n";
+				exit(-1);
+			}
+			for (int i = 0; i < temp->_size; i++)
+			{
+				temp->_arr[i] = this->_arr[i];
+			}
+		}
+	}
+
+	return *temp;
+}
+
+ArrayIntegers& ArrayIntegers::operator-=(int& right)
+{
+	
+	if (this->elementInArray(right) == true)
+	{
+		this->_size -= 1;
+		if (this->_size == 0)
+		{
+			delete[]this->_arr;
+			this->_arr = nullptr;
+		}
+		else
+		{
+			int *sub_arr = new int[this->_size];
+			if (sub_arr == nullptr)
+			{
+				cout << "Error\n";
+				exit(-1);
+			}
+			for (int i = 0, j = 0; i < this->_size+1; i++)
+			{
+				if (this->_arr[i] != right)
+				{
+					sub_arr[j] = this->_arr[i];
+					j++;
+				}
+			}
+			delete[]this->_arr;
+			this->_arr = sub_arr;
+			
+		}
+	}
+	else
+	{
+		return*this;
+	}
+
+	return *this;
+}
+
 ostream& operator<<(ostream& out, const ArrayIntegers& right)
 {
 	string str;

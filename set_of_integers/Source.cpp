@@ -26,10 +26,10 @@ int main()
 	int arr2[size] = { 4, 2, 5 };
 	ArrayIntegers test(arr, size);
 	ArrayIntegers test2(arr2, size);
-	cout << test << endl;
-	test += test2;
-	cout << test << endl;
-	cout << test2 << endl;
+	ArrayIntegers test3;
+	cout << test3 << endl;
+	test3 -= a;
+	cout << test3 << endl;
 
 	system("pause");
 	return 0;
