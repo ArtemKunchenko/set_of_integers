@@ -23,13 +23,14 @@ int main()
 	const int size = 3;
 	int a = 4;
 	int arr[size] = { 1, 2, 3 };
-	int arr2[size] = { 4, 2, 5 };
+	int arr2[size] = { 4, 2, 1 };
 	ArrayIntegers test(arr, size);
 	ArrayIntegers test2(arr2, size);
 	ArrayIntegers test3;
 	ArrayIntegers test4;
 	cout << test << endl;
-	test -=test2;
+	cout << test2 << endl;
+	test*=test2;
 	cout << test << endl;
 
 	system("pause");
