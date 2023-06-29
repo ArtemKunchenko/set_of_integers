@@ -256,6 +256,40 @@ ArrayIntegers& ArrayIntegers::operator+(ArrayIntegers& right)
 			temp->_arr[i] = right._arr[i];
 		}
 	}
+	else
+	{
+		int counter = 0;
+		int sum_size = this->_size + right._size;
+		int* sum_arr = new int[sum_size];
+		for (int i = 0, j=0, k=0; i < sum_size; i++)
+		{
+			if (i< this->_size)
+			{
+				sum_arr[j] = this->_arr[j];
+				counter++;
+				j++;
+			}
+			else
+			{
+				if (this->elementInArray(right._arr[k])==false)
+				{
+					sum_arr[j] = right._arr[k];
+					counter++;
+					j++;
+				}
+				k++;
+			}
+
+		}
+		temp->_size = counter;
+		temp->_arr = new int[counter];
+		for (int i = 0; i < temp->_size; i++)
+		{
+			temp->_arr[i] = sum_arr[i];
+		}
+		delete[]sum_arr;
+
+	}
 
 	return *temp; 
 }

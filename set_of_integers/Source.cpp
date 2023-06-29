@@ -23,15 +23,10 @@ int main()
 	const int size = 3;
 	int a = 4;
 	int arr[size] = { 1, 2, 3 };
+	int arr2[size] = { 4, 2, 5 };
 	ArrayIntegers test(arr, size);
-	/*ArrayIntegers test2;
-	ArrayIntegers test3;
-	test3 = test2 + test;
-	cout << test3<< endl;
-	cout << test2 << endl;
-	cout << test << endl;*/
-	cout<<test.elementInArray(2)<<endl;
-	cout<<test.elementInArray(4)<<endl;
+	ArrayIntegers test2(arr2, size);
+	cout << test + test2 << endl;
 
 	system("pause");
 	return 0;
