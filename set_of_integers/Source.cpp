@@ -31,14 +31,17 @@ int main()
 	ArrayIntegers test2(arr2, size);
 	ArrayIntegers test3(arr3, size);
 	ArrayIntegers test4(arr4, size2);
-	cout << test << endl;
+	ArrayIntegers test5;
+	/*cout << test << endl;
 	cout << test2 << endl;
 	cout << test3 << endl;
 	cout << test4 << endl;
 	cout << (test==test2) <<endl;
 	cout << (test == test3) << endl;
-	cout << (test == test4) << endl;
-
+	cout << (test == test4) << endl;*/
+	cout << test << endl;
+	cin >> test;
+	cout << "\n\n" << test << endl;
 	system("pause");
 	return 0;
 }

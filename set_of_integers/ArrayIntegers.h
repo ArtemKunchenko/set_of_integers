@@ -25,12 +25,13 @@ public:
 	ArrayIntegers& operator*= (ArrayIntegers& right);
 	bool operator== (ArrayIntegers& right);
 	friend ostream& operator<< (ostream& out, const ArrayIntegers & right);
+	friend istream& operator>>(istream& in, ArrayIntegers& right);
 private:
 	int _size;
 	int* _arr;
 };
 ostream& operator<< (ostream& out, const ArrayIntegers& right);
-
+istream& operator>>(istream& in, ArrayIntegers& right);
 
 
 

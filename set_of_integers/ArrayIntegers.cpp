@@ -524,7 +524,7 @@ ArrayIntegers& ArrayIntegers::operator-=(ArrayIntegers& right)
 		else
 		{
 			this->_arr = new int[counter];
-			for (int i = 0; i <this->_size; i++)
+			for (int i = 0; i < this->_size; i++)
 			{
 				this->_arr[i] = sub_arr[i];
 			}
@@ -625,7 +625,7 @@ bool ArrayIntegers::operator==(ArrayIntegers& right)
 	bool equal = true;
 	for (int i = 0; i < this->_size; i++)
 	{
-		if (this->_size!=right._size|| this->_arr[i] != right._arr[i])
+		if (this->_size != right._size || this->_arr[i] != right._arr[i])
 		{
 			equal = false;
 			break;
@@ -654,3 +654,51 @@ ostream& operator<<(ostream& out, const ArrayIntegers& right)
 	out << str;
 	return out;
 }
+istream& operator>>(istream& in, ArrayIntegers& right)
+{
+	if (right._arr == nullptr)
+	{
+		cout << "Enter amount of elements: ";
+		in >> right._size;
+
+		right._arr = new int[right._size];
+		if (right._arr == nullptr)
+		{
+			cout << "Error\n";
+			exit(-1);
+		}
+
+		cout << "Enter the elements of the array:\n";
+		for (int i = 0; i < right._size; i++)
+		{
+			cout << "Element " << (i + 1) << ": ";
+			in >> right._arr[i];
+		}
+
+	}
+	else
+	{
+		right._size = 0;
+		delete[]right._arr;
+		right._arr = nullptr;
+		cout << "Enter amount of elements: ";
+		in >> right._size;
+		right._arr = new int[right._size];
+		if (right._arr == nullptr)
+		{
+			cout << "Error\n";
+			exit(-1);
+		}
+		cout << "Enter the elements of the array:\n";
+		for (int i = 0; i < right._size; i++)
+		{
+			cout << "Element " << (i + 1) << ": ";
+			in >> right._arr[i];
+		}
+	}
+
+
+	return in;
+}
+
+
