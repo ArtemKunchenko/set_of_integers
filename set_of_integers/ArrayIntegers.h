@@ -23,6 +23,7 @@ public:
 	ArrayIntegers& operator-= (ArrayIntegers& right);
 	ArrayIntegers& operator* (ArrayIntegers& right);
 	ArrayIntegers& operator*= (ArrayIntegers& right);
+	bool operator== (ArrayIntegers& right);
 	friend ostream& operator<< (ostream& out, const ArrayIntegers & right);
 private:
 	int _size;

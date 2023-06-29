@@ -620,6 +620,20 @@ ArrayIntegers& ArrayIntegers::operator*=(ArrayIntegers& right)
 	return *this;
 }
 
+bool ArrayIntegers::operator==(ArrayIntegers& right)
+{
+	bool equal = true;
+	for (int i = 0; i < this->_size; i++)
+	{
+		if (this->_size!=right._size|| this->_arr[i] != right._arr[i])
+		{
+			equal = false;
+			break;
+		}
+	}
+	return equal;
+}
+
 ostream& operator<<(ostream& out, const ArrayIntegers& right)
 {
 	string str;
