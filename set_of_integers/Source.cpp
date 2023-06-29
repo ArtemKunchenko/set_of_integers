@@ -28,9 +28,9 @@ int main()
 	ArrayIntegers test2(arr2, size);
 	ArrayIntegers test3;
 	ArrayIntegers test4;
-	cout << test4 << endl;
-	test4 = test-test2;
-	cout << test4 << endl;
+	cout << test << endl;
+	test -=test2;
+	cout << test << endl;
 
 	system("pause");
 	return 0;

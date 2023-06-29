@@ -245,9 +245,9 @@ ArrayIntegers& ArrayIntegers::operator+=(int right)
 ArrayIntegers& ArrayIntegers::operator+(ArrayIntegers& right)
 {
 
-	ArrayIntegers* temp = new ArrayIntegers(); 
+	ArrayIntegers* temp = new ArrayIntegers();
 
-	if (this->_arr == nullptr) 
+	if (this->_arr == nullptr)
 	{
 		temp->_size = right._size;
 		temp->_arr = new int[temp->_size];
@@ -262,9 +262,9 @@ ArrayIntegers& ArrayIntegers::operator+(ArrayIntegers& right)
 		int counter = 0;
 		int sum_size = this->_size + right._size;
 		int* sum_arr = new int[sum_size];
-		for (int i = 0, j=0, k=0; i < sum_size; i++)
+		for (int i = 0, j = 0, k = 0; i < sum_size; i++)
 		{
-			if (i< this->_size)
+			if (i < this->_size)
 			{
 				sum_arr[j] = this->_arr[j];
 				counter++;
@@ -272,7 +272,7 @@ ArrayIntegers& ArrayIntegers::operator+(ArrayIntegers& right)
 			}
 			else
 			{
-				if (this->elementInArray(right._arr[k])==false)
+				if (this->elementInArray(right._arr[k]) == false)
 				{
 					sum_arr[j] = right._arr[k];
 					counter++;
@@ -292,14 +292,14 @@ ArrayIntegers& ArrayIntegers::operator+(ArrayIntegers& right)
 
 	}
 
-	return *temp; 
+	return *temp;
 }
 
 ArrayIntegers& ArrayIntegers::operator+=(ArrayIntegers& right)
 {
-	if (this->_arr==nullptr)
+	if (this->_arr == nullptr)
 	{
-		if (right._arr==nullptr)
+		if (right._arr == nullptr)
 		{
 			return *this;
 		}
@@ -361,9 +361,9 @@ ArrayIntegers& ArrayIntegers::operator+=(ArrayIntegers& right)
 
 ArrayIntegers& ArrayIntegers::operator-(int& right)
 {
-	
+
 	ArrayIntegers* temp = new ArrayIntegers();
-	if (this->elementInArray(right)==true)
+	if (this->elementInArray(right) == true)
 	{
 		temp->_size = this->_size - 1;
 		if (temp->_size == 0)
@@ -390,7 +390,7 @@ ArrayIntegers& ArrayIntegers::operator-(int& right)
 	}
 	else
 	{
-		if (this->_arr==nullptr)
+		if (this->_arr == nullptr)
 		{
 			temp->_size = 0;
 			temp->_arr = nullptr;
@@ -416,7 +416,7 @@ ArrayIntegers& ArrayIntegers::operator-(int& right)
 
 ArrayIntegers& ArrayIntegers::operator-=(int& right)
 {
-	
+
 	if (this->elementInArray(right) == true)
 	{
 		this->_size -= 1;
@@ -427,13 +427,13 @@ ArrayIntegers& ArrayIntegers::operator-=(int& right)
 		}
 		else
 		{
-			int *sub_arr = new int[this->_size];
+			int* sub_arr = new int[this->_size];
 			if (sub_arr == nullptr)
 			{
 				cout << "Error\n";
 				exit(-1);
 			}
-			for (int i = 0, j = 0; i < this->_size+1; i++)
+			for (int i = 0, j = 0; i < this->_size + 1; i++)
 			{
 				if (this->_arr[i] != right)
 				{
@@ -443,7 +443,7 @@ ArrayIntegers& ArrayIntegers::operator-=(int& right)
 			}
 			delete[]this->_arr;
 			this->_arr = sub_arr;
-			
+
 		}
 	}
 	else
@@ -457,14 +457,14 @@ ArrayIntegers& ArrayIntegers::operator-=(int& right)
 ArrayIntegers& ArrayIntegers::operator-(ArrayIntegers& right)
 {
 	ArrayIntegers* temp = new ArrayIntegers();
-	if (this->_arr==nullptr)
+	if (this->_arr == nullptr)
 	{
 		temp->_size = 0;
 		temp->_arr = nullptr;
 	}
 	else
 	{
-		
+
 		int counter = 0;
 		int sub_size = this->_size;
 		int* sub_arr = new int[sub_size];
@@ -479,15 +479,62 @@ ArrayIntegers& ArrayIntegers::operator-(ArrayIntegers& right)
 		}
 
 		temp->_size = counter;
-		temp->_arr = new int[counter];
-		for (int i = 0; i < temp->_size; i++)
+		if (counter == 0) temp->_arr = nullptr;
+		else
 		{
-			temp->_arr[i] = sub_arr[i];
+			temp->_arr = new int[counter];
+			for (int i = 0; i < temp->_size; i++)
+			{
+				temp->_arr[i] = sub_arr[i];
+			}
+
 		}
+
 		delete[] sub_arr;
 
 	}
 	return *temp;
+}
+
+ArrayIntegers& ArrayIntegers::operator-=(ArrayIntegers& right)
+{
+	if (this->_arr == nullptr)
+	{
+		return *this;
+	}
+	else
+	{
+
+		int counter = 0;
+		int sub_size = this->_size;
+		int* sub_arr = new int[sub_size];
+		for (int i = 0, j = 0; i < this->_size; i++)
+		{
+			if (right.elementInArray(this->_arr[i]) == false)
+			{
+				sub_arr[j] = this->_arr[i];
+				j++;
+				counter++;
+			}
+		}
+
+		this->_size = counter;
+		delete[]this->_arr;
+		if (counter == 0) this->_arr = nullptr;
+		else
+		{
+			this->_arr = new int[counter];
+			for (int i = 0; i <this->_size; i++)
+			{
+				this->_arr[i] = sub_arr[i];
+			}
+
+		}
+
+		delete[] sub_arr;
+
+	}
+	return *this;
 }
 
 ostream& operator<<(ostream& out, const ArrayIntegers& right)
