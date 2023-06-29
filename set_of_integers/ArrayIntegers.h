@@ -12,7 +12,7 @@ public:
 	~ArrayIntegers();//distructor
 	ArrayIntegers(const ArrayIntegers& other);//copy constructor
 	void operator=(const ArrayIntegers& other);//copy operator
-	void elementInArray(int element);
+	bool elementInArray(int element);
 	ArrayIntegers& operator+ (int& right);
 	ArrayIntegers& operator+= (int right);
 	ArrayIntegers& operator+ (ArrayIntegers& right);

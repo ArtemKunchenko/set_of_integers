@@ -104,7 +104,7 @@ void ArrayIntegers::operator=(const ArrayIntegers& other)
 	}
 }
 
-void ArrayIntegers::elementInArray(int element)
+bool ArrayIntegers::elementInArray(int element)
 {
 
 	bool same_elememt = false;
@@ -116,8 +116,9 @@ void ArrayIntegers::elementInArray(int element)
 			break;
 		}
 	}
-	if (same_elememt == true) cout << "Array includes element \"" << element << "\"\n";
-	else cout << "Array doesn't include element \"" << element << "\"\n";
+	return same_elememt;
+	/*if (same_elememt == true) cout << "Array includes element \"" << element << "\"\n";
+	else cout << "Array doesn't include element \"" << element << "\"\n";*/
 }
 
 ArrayIntegers& ArrayIntegers::operator+(int& right)
